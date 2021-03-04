@@ -17,8 +17,14 @@ window.onload = () => {
       for (let j = 0; j < app.modals.length; j++) {
         app.modals[j].classList.add("hidden");
         app.overlay.classList.remove("hidden");
+        app.overlay.addEventListener("click", () => {
+          closeModal(j);
+        });
         app.closeModalBtn[j].addEventListener("click", () => {
           closeModal(j);
+        });
+        document.addEventListener("keydown", e => {
+          if (e.key === "Escape") closeModal(j);
         });
       }
       app.modals[i].classList.remove("hidden");
